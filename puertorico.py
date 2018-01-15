@@ -1,98 +1,12 @@
 # Brian Mann
-# Puerto Rico local version
-# 1/28/2017
+# Puerto Rico
+# Main Executable
+# 1/15/2018
 
-import sys, math, os, pygame, random
+import sys, math, os, random
+from classes import *
 from pygame.locals import *
-
-class Player(pygame.sprite.Sprite):
-	def __init__(self, pn, numPlayers, gs=None):
-		pygame.sprite.Sprite.__init__(self)
-
-		self.gs = gs
-		self.pn = pn
-		self.building_spaces = 12
-		self.island_spaces = 12
-		self.vpoints = 0
-		if numPlayers == 3:
-			self.doubloons = 2
-		elif numPlayers == 4:
-			self.doubloons = 3
-		else:
-			self.doubloons = 4
-
-class RoleCard(pygame.sprite.Sprite):
-	def __init__(self, role, gs=None):
-		pygame.sprite.Sprite.__init__(self)
-
-		self.gs = gs
-		self.role = role
-		self.image = pygame.image.load(role+".png")
-		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width/2, self.gs.height/2)
-		self.doubloons = 0
-
-class CargoShip(pygame.sprite.Sprite):
-	def __init__(self, numSpaces, gs=None):
-		pygame.sprite.Sprite.__init__(self)
-
-		self.gs = gs
-		self.total_Spaces = numSpaces
-		self.image = pygame.image.load("cargoship" + str(self.total_Spaces) + ".png")
-		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width/2, self.gs.height/2)
-		self.spaces_Left = numSpaces
-
-class ColonistShip(pygame.sprite.Sprite):
-	def __init__(self, numColonists, gs=None):
-		pygame.sprite.Sprite.__init__(self)
-
-		self.gs = gs
-		self.image = pygame.image.load("colonistship.png")
-		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width/2, self.gs.height/2)
-		self.numColonists = numColonists
-
-class TradingHouse(pygame.sprite.Sprite):
-	def __init__(self, gs=None):
-		pygame.sprite.Sprite.__init__(self)
-
-		self.gs = gs
-		self.space1 = None
-		self.space2 = None
-		self.space3 = None
-		self.space4 = None
-		self.image = pygame.image.load("tradinghouse.png")
-		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width/2, self.gs.height/2)
-
-class Menu(pygame.sprite.Sprite):
-	def __init__(self, gs=None):
-		pygame.sprite.Sprite.__init__(self)
-		self.gs = gs
-		self.image = pygame.image.load("menu.jpg")
-		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width/2, self.gs.height/2)
-		self.numPlayers = self.gs.minPlayers
-		self.isMenu = True
-
-		self.l2 = "Play with " + str(self.numPlayers) + " players (Press the Up or Down arrows to change)"
-		self.l3 = "Press Enter to begin!"
-
-	def tick(self):
-		self.l2 = "Play with " + str(self.numPlayers) + " players (Press the Up or Down arrows to change)"
-
-	def changePlayers(self, code):
-		if code == pygame.K_UP:
-			if self.numPlayers == self.gs.maxPlayers:
-				pass
-			else:
-				self.numPlayers += 1
-		else:
-			if self.numPlayers == self.gs.minPlayers:
-				pass
-			else:
-				self.numPlayers -= 1
+from random import sample
 
 class GameSpace:
 	def main(self):
@@ -104,7 +18,7 @@ class GameSpace:
 		self.size = self.width, self.height = 1366, 768
 		self.black = 255, 255, 255
 
-		self.screen = pygame.display.set_mode(self.size, pygame.FULLSCREEN)
+		self.screen = pygame.display.set_mode(self.size)#, pygame.FULLSCREEN)
 		self.clock = pygame.time.Clock()
 
 		self.gameOver = False
@@ -163,7 +77,6 @@ class GameSpace:
 		self.numSugarPlants = 11
 		self.numTobaccoPlants = 9
 		self.numCoffeePlants = 8
-		self.doubloons = 60
 
 		self.colonistShip = ColonistShip(self.numPlayers, self)
 		self.tradingHouse = TradingHouse(self)
@@ -183,6 +96,7 @@ class GameSpace:
 			self.prospector1 = None
 			self.prospector2 = None
 			self.numPiles = 4
+			self.doubloons = 80
 		elif self.numPlayers == 4:
 			self.vpoints = 100
 			self.colonists = 75
@@ -192,15 +106,19 @@ class GameSpace:
 			self.prospector1 = RoleCard("prospector", self)
 			self.prospector2 = None
 			self.numPiles = 5
+			self.doubloons = 74
 		else:
 			self.vpoints = 122
 			self.colonists = 95
-			self.cargo1 = CargoShip(5, self)
-			self.cargo2 = CargoShip(6, self)
-			self.cargo3 = CargoShip(7, self)
+			self.cargo1 = CargoShip(6, self)
+			self.cargo2 = CargoShip(7, self)
+			self.cargo3 = CargoShip(8, self)
 			self.prospector1 = RoleCard("prospector", self)
 			self.prospector2 = RoleCard("prospector", self)
 			self.numPiles = 6
+			self.doubloons = 66
+
+		self.turnOrder(self.players)
 
 		# main game loop
 		while self.quit == False:
@@ -221,6 +139,14 @@ class GameSpace:
 			self.screen.fill(self.black)
 
 			pygame.display.flip()
+
+	def turnOrder(self, players):
+		myorder = sample(range(len(players)), k=len(players))
+		print(myorder)
+		self.players = [self.players[i] for i in myorder]
+		for i in self.players:
+			print(i.pn)
+
 
 if __name__ == '__main__':
 	gs = GameSpace()
