@@ -91,9 +91,9 @@ class GameSpace:
 		if self.numPlayers == 3:
 			self.vpoints = 75
 			self.colonists = 55
-			self.cargo1 = CargoShip(4, self)
-			self.cargo2 = CargoShip(5, self)
-			self.cargo3 = CargoShip(6, self)
+			self.cargo1 = CargoShip(4, 1, self)
+			self.cargo2 = CargoShip(5, 2, self)
+			self.cargo3 = CargoShip(6, 3, self)
 			self.prospector1 = None
 			self.prospector2 = None
 			self.numPiles = 4
@@ -101,9 +101,9 @@ class GameSpace:
 		elif self.numPlayers == 4:
 			self.vpoints = 100
 			self.colonists = 75
-			self.cargo1 = CargoShip(5, self)
-			self.cargo2 = CargoShip(6, self)
-			self.cargo3 = CargoShip(7, self)
+			self.cargo1 = CargoShip(5, 1, self)
+			self.cargo2 = CargoShip(6, 2, self)
+			self.cargo3 = CargoShip(7, 3, self)
 			self.prospector1 = RoleCard("prospector", self)
 			self.prospector2 = None
 			self.numPiles = 5
@@ -111,9 +111,9 @@ class GameSpace:
 		else:
 			self.vpoints = 122
 			self.colonists = 95
-			self.cargo1 = CargoShip(6, self)
-			self.cargo2 = CargoShip(7, self)
-			self.cargo3 = CargoShip(8, self)
+			self.cargo1 = CargoShip(6, 1, self)
+			self.cargo2 = CargoShip(7, 2, self)
+			self.cargo3 = CargoShip(8, 3, self)
 			self.prospector1 = RoleCard("prospector", self)
 			self.prospector2 = RoleCard("prospector", self)
 			self.numPiles = 6
@@ -143,7 +143,7 @@ class GameSpace:
 			self.screen.blit(self.colonistship.image, self.colonistship.rect)
 			self.screen.blit(self.cargo1.image, self.cargo1.rect)
 			self.screen.blit(self.cargo2.image, self.cargo2.rect)
-			self.screen.blit(self.cargo2.image, self.cargo3.rect)
+			self.screen.blit(self.cargo3.image, self.cargo3.rect)
 
 			pygame.display.flip()
 
