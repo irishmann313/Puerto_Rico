@@ -78,14 +78,15 @@ class GameSpace:
 		self.numTobaccoPlants = 9
 		self.numCoffeePlants = 8
 
-		self.colonistShip = ColonistShip(self.numPlayers, self)
-		self.tradingHouse = TradingHouse(self)
+		self.colonistship = ColonistShip(self.numPlayers, self)
+		self.tradinghouse = TradingHouse(self)
 		self.settler = RoleCard("settler", self)
 		self.mayor = RoleCard("mayor", self)
 		self.builder = RoleCard("builder", self)
 		self.craftsman = RoleCard("craftsman", self)
 		self.trader = RoleCard("trader", self)
 		self.captain = RoleCard("captain", self)
+		self.buildingboard = BuildingBoard(self)
 
 		if self.numPlayers == 3:
 			self.vpoints = 75
@@ -137,15 +138,15 @@ class GameSpace:
 
 			# display objects
 			self.screen.fill(self.black)
+			self.screen.blit(self.buildingboard.image, self.buildingboard.rect)
+			self.screen.blit(self.tradinghouse.image, self.tradinghouse.rect)
+			self.screen.blit(self.colonistship.image, self.colonistship.rect)
 
 			pygame.display.flip()
 
 	def turnOrder(self, players):
 		myorder = sample(range(len(players)), k=len(players))
-		print(myorder)
 		self.players = [self.players[i] for i in myorder]
-		for i in self.players:
-			print(i.pn)
 
 
 if __name__ == '__main__':

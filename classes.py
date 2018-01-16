@@ -50,7 +50,7 @@ class ColonistShip(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\colonistship.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width/2, self.gs.height/2)
+		self.rect.center = ((19/80)*self.gs.width, (8/14)*self.gs.height)
 		self.numColonists = numColonists
 
 class TradingHouse(pygame.sprite.Sprite):
@@ -63,6 +63,15 @@ class TradingHouse(pygame.sprite.Sprite):
 		self.space3 = None
 		self.space4 = None
 		self.image = pygame.image.load("assets\\tradinghouse.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = ((19/80)*self.gs.width, (6/14)*self.gs.height)
+
+class BuildingBoard(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\buildingboard.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, self.gs.height/2)
 
