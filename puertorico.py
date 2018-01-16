@@ -141,6 +141,9 @@ class GameSpace:
 			self.screen.blit(self.buildingboard.image, self.buildingboard.rect)
 			self.screen.blit(self.tradinghouse.image, self.tradinghouse.rect)
 			self.screen.blit(self.colonistship.image, self.colonistship.rect)
+			self.screen.blit(self.cargo1.image, self.cargo1.rect)
+			self.screen.blit(self.cargo2.image, self.cargo2.rect)
+			self.screen.blit(self.cargo2.image, self.cargo3.rect)
 
 			pygame.display.flip()
 
