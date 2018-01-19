@@ -87,6 +87,19 @@ class GameSpace:
 		self.trader = RoleCard("trader", self)
 		self.captain = RoleCard("captain", self)
 		self.buildingboard = BuildingBoard(self)
+		self.smallindigoplant = SmallIndigoPlant(self)
+		self.smallsugarmill = SmallSugarMill(self)
+		self.smallmarket = SmallMarket(self)
+		self.hacienda = Hacienda(self)
+		self.constructionhut = ConstructionHut(self)
+		self.smallwarehouse = SmallWarehouse(self)
+
+		self.tobaccostorage = TobaccoStorage(self)
+		self.coffeeroaster = CoffeeRoaster(self)
+		self.university = University(self)
+		self.factory = Factory(self)
+		self.harbor = Harbor(self)
+		self.wharf = Wharf(self)
 
 		if self.numPlayers == 3:
 			self.vpoints = 75
@@ -144,6 +157,18 @@ class GameSpace:
 			self.screen.blit(self.cargo1.image, self.cargo1.rect)
 			self.screen.blit(self.cargo2.image, self.cargo2.rect)
 			self.screen.blit(self.cargo3.image, self.cargo3.rect)
+			self.screen.blit(self.smallindigoplant.image, self.smallindigoplant.rect)
+			self.screen.blit(self.smallsugarmill.image, self.smallsugarmill.rect)
+			self.screen.blit(self.smallmarket.image, self.smallmarket.rect)
+			self.screen.blit(self.hacienda.image, self.hacienda.rect)
+			self.screen.blit(self.constructionhut.image, self.constructionhut.rect)
+			self.screen.blit(self.smallwarehouse.image, self.smallwarehouse.rect)
+			self.screen.blit(self.tobaccostorage.image, self.tobaccostorage.rect)
+			self.screen.blit(self.coffeeroaster.image, self.coffeeroaster.rect)
+			self.screen.blit(self.university.image, self.university.rect)
+			self.screen.blit(self.factory.image, self.factory.rect)
+			self.screen.blit(self.harbor.image, self.harbor.rect)
+			self.screen.blit(self.wharf.image, self.wharf.rect)
 
 			pygame.display.flip()
 

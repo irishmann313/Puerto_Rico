@@ -41,7 +41,6 @@ class CargoShip(pygame.sprite.Sprite):
 		self.size = size
 		self.imagename = "assets\\cargoship" + str(self.total_Spaces) + ".png"
 		self.image = pygame.image.load(self.imagename)
-		print(self.imagename)
 		self.rect = self.image.get_rect()
 		if (self.size == 1):
 			self.rect.center = ((61/80)*self.gs.width, (1/14)*self.gs.height)
@@ -56,7 +55,7 @@ class ColonistShip(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 
 		self.gs = gs
-		self.image = pygame.image.load("assets\\colonistship.png")
+		self.image = pygame.image.load("assets\\colonist_ship.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((19/80)*self.gs.width, (3/14)*self.gs.height)
 		self.numColonists = numColonists
@@ -70,7 +69,7 @@ class TradingHouse(pygame.sprite.Sprite):
 		self.space2 = None
 		self.space3 = None
 		self.space4 = None
-		self.image = pygame.image.load("assets\\tradinghouse.png")
+		self.image = pygame.image.load("assets\\trading_house.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((19/80)*self.gs.width, (1/14)*self.gs.height)
 
@@ -79,9 +78,9 @@ class BuildingBoard(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 
 		self.gs = gs
-		self.image = pygame.image.load("assets\\buildingboard.png")
+		self.image = pygame.image.load("assets\\building_board.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width/2, self.gs.height/4)
+		self.rect.center = (self.gs.width/2, 3*self.gs.height/10)
 
 class Menu(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -110,3 +109,210 @@ class Menu(pygame.sprite.Sprite):
 				pass
 			else:
 				self.numPlayers -= 1
+
+class SmallIndigoPlant(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\small_indigo_plant.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = ((99/320)*self.gs.width, (11/112)*self.gs.height)
+
+class SmallSugarMill(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\small_sugar_mill.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = ((99/320)*self.gs.width, (21/112)*self.gs.height)
+
+class SmallMarket(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\small_market.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = ((99/320)*self.gs.width, (31/112)*self.gs.height)
+
+class Hacienda(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\hacienda.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = ((99/320)*self.gs.width, (41/112)*self.gs.height)
+
+class ConstructionHut(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\construction_hut.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = ((99/320)*self.gs.width, (51/112)*self.gs.height)
+
+class SmallWarehouse(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\small_warehouse.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = ((99/320)*self.gs.width, (61/112)*self.gs.height)
+
+class IndigoPlant(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\indigo_plant.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (11/112)*self.gs.height)
+
+class SugarMill(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\sugar_mill.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (21/112)*self.gs.height)
+
+class Hospice(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\hospice.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (31/112)*self.gs.height)
+
+class Office(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\office.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (41/112)*self.gs.height)
+
+class LargeMarket(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\large_market.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (51/112)*self.gs.height)
+
+class LargeWarehouse(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\large_warehouse.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (61/112)*self.gs.height)
+
+class TobaccoStorage(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\tobacco_storage.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width/2, (11/112)*self.gs.height)
+
+class CoffeeRoaster(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\coffee_roaster.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width/2, (21/112)*self.gs.height)
+
+class University(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\university.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width/2, (31/112)*self.gs.height)
+
+class Factory(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\factory.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width/2, (41/112)*self.gs.height)
+
+class Harbor(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\harbor.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width/2, (51/112)*self.gs.height)
+
+class Wharf(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\wharf.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width/2, (61/112)*self.gs.height)
+
+class GuildHall(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\guild_hall.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (11/112)*self.gs.height)
+
+class Residence(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\residence.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (21/112)*self.gs.height)
+
+class Fortress(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\fortress.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (31/112)*self.gs.height)
+
+class CustomsHouse(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\customs_house.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (41/112)*self.gs.height)
+
+class CityHall(pygame.sprite.Sprite):
+	def __init__(self, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+
+		self.gs = gs
+		self.image = pygame.image.load("assets\\city_hall.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width, (51/112)*self.gs.height)
