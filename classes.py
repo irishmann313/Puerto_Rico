@@ -171,7 +171,7 @@ class IndigoPlant(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\indigo_plant.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (11/112)*self.gs.height)
+		self.rect.center = ((259/640)*self.gs.width, (11/112)*self.gs.height)
 
 class SugarMill(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -180,7 +180,7 @@ class SugarMill(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\sugar_mill.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (21/112)*self.gs.height)
+		self.rect.center = ((259/640)*self.gs.width, (21/112)*self.gs.height)
 
 class Hospice(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -189,7 +189,7 @@ class Hospice(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\hospice.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (31/112)*self.gs.height)
+		self.rect.center = ((259/640)*self.gs.width, (31/112)*self.gs.height)
 
 class Office(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -198,7 +198,7 @@ class Office(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\office.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (41/112)*self.gs.height)
+		self.rect.center = ((259/640)*self.gs.width, (41/112)*self.gs.height)
 
 class LargeMarket(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -207,7 +207,7 @@ class LargeMarket(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\large_market.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (51/112)*self.gs.height)
+		self.rect.center = ((259/640)*self.gs.width, (51/112)*self.gs.height)
 
 class LargeWarehouse(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -216,7 +216,7 @@ class LargeWarehouse(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\large_warehouse.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (61/112)*self.gs.height)
+		self.rect.center = ((259/640)*self.gs.width, (61/112)*self.gs.height)
 
 class TobaccoStorage(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -279,7 +279,7 @@ class GuildHall(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\guild_hall.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (11/112)*self.gs.height)
+		self.rect.center = (self.gs.width, (16/112)*self.gs.height)
 
 class Residence(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -288,7 +288,7 @@ class Residence(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\residence.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (21/112)*self.gs.height)
+		self.rect.center = (self.gs.width, (31/112)*self.gs.height)
 
 class Fortress(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -297,7 +297,7 @@ class Fortress(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\fortress.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (31/112)*self.gs.height)
+		self.rect.center = (self.gs.width, (46/112)*self.gs.height)
 
 class CustomsHouse(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -306,7 +306,7 @@ class CustomsHouse(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\customs_house.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (41/112)*self.gs.height)
+		self.rect.center = (self.gs.width, (61/112)*self.gs.height)
 
 class CityHall(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -315,4 +315,4 @@ class CityHall(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\city_hall.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (51/112)*self.gs.height)
+		self.rect.center = (self.gs.width, (76/112)*self.gs.height)
