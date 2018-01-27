@@ -32,6 +32,9 @@ class RoleCard(pygame.sprite.Sprite):
 		self.rect.center = (self.gs.width/2, self.gs.height/2)
 		self.doubloons = 0
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class CargoShip(pygame.sprite.Sprite):
 	def __init__(self, numSpaces, size, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -119,6 +122,9 @@ class SmallIndigoPlant(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = ((99/320)*self.gs.width, (11/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class SmallSugarMill(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -127,6 +133,9 @@ class SmallSugarMill(pygame.sprite.Sprite):
 		self.image = pygame.image.load("assets\\small_sugar_mill.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((99/320)*self.gs.width, (21/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class SmallMarket(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -137,6 +146,9 @@ class SmallMarket(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = ((99/320)*self.gs.width, (31/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class Hacienda(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -145,6 +157,9 @@ class Hacienda(pygame.sprite.Sprite):
 		self.image = pygame.image.load("assets\\hacienda.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((99/320)*self.gs.width, (41/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class ConstructionHut(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -155,6 +170,9 @@ class ConstructionHut(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = ((99/320)*self.gs.width, (51/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class SmallWarehouse(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -163,6 +181,9 @@ class SmallWarehouse(pygame.sprite.Sprite):
 		self.image = pygame.image.load("assets\\small_warehouse.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((99/320)*self.gs.width, (61/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class IndigoPlant(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -173,6 +194,9 @@ class IndigoPlant(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = ((259/640)*self.gs.width, (11/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class SugarMill(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -181,6 +205,9 @@ class SugarMill(pygame.sprite.Sprite):
 		self.image = pygame.image.load("assets\\sugar_mill.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((259/640)*self.gs.width, (21/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class Hospice(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -191,6 +218,9 @@ class Hospice(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = ((259/640)*self.gs.width, (31/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class Office(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -199,6 +229,9 @@ class Office(pygame.sprite.Sprite):
 		self.image = pygame.image.load("assets\\office.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((259/640)*self.gs.width, (41/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class LargeMarket(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -209,6 +242,9 @@ class LargeMarket(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = ((259/640)*self.gs.width, (51/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class LargeWarehouse(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -217,6 +253,9 @@ class LargeWarehouse(pygame.sprite.Sprite):
 		self.image = pygame.image.load("assets\\large_warehouse.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((259/640)*self.gs.width, (61/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class TobaccoStorage(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -227,6 +266,9 @@ class TobaccoStorage(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, (11/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class CoffeeRoaster(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -235,6 +277,9 @@ class CoffeeRoaster(pygame.sprite.Sprite):
 		self.image = pygame.image.load("assets\\coffee_roaster.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, (21/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class University(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -245,6 +290,9 @@ class University(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, (31/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class Factory(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -253,6 +301,9 @@ class Factory(pygame.sprite.Sprite):
 		self.image = pygame.image.load("assets\\factory.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, (41/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class Harbor(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -263,6 +314,9 @@ class Harbor(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, (51/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class Wharf(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -272,6 +326,9 @@ class Wharf(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, (61/112)*self.gs.height)
 
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
 class GuildHall(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
@@ -279,7 +336,10 @@ class GuildHall(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\guild_hall.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (16/112)*self.gs.height)
+		self.rect.center = ((59.5/100)*self.gs.width, (15.25/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class Residence(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -288,7 +348,10 @@ class Residence(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\residence.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (31/112)*self.gs.height)
+		self.rect.center = ((6.85/10)*self.gs.width, (15.25/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class Fortress(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -297,7 +360,10 @@ class Fortress(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\fortress.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (46/112)*self.gs.height)
+		self.rect.center = ((59.5/100)*self.gs.width, (35.25/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class CustomsHouse(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -306,7 +372,10 @@ class CustomsHouse(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\customs_house.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (61/112)*self.gs.height)
+		self.rect.center = ((6.85/10)*self.gs.width, (35.25/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
 
 class CityHall(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -315,4 +384,7 @@ class CityHall(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\city_hall.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = (self.gs.width, (76/112)*self.gs.height)
+		self.rect.center = ((64/100)*self.gs.width, (55.25/112)*self.gs.height)
+
+	def is_clicked(self):
+		return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())

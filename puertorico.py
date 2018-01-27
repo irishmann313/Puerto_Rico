@@ -78,38 +78,74 @@ class GameSpace:
 		self.numTobaccoPlants = 9
 		self.numCoffeePlants = 8
 
+		sprite_list = []
+
+		# Sprites that won't be clicked
 		self.colonistship = ColonistShip(self.numPlayers, self)
 		self.tradinghouse = TradingHouse(self)
-		self.settler = RoleCard("settler", self)
-		self.mayor = RoleCard("mayor", self)
-		self.builder = RoleCard("builder", self)
-		self.craftsman = RoleCard("craftsman", self)
-		self.trader = RoleCard("trader", self)
-		self.captain = RoleCard("captain", self)
 		self.buildingboard = BuildingBoard(self)
+
+		# Sprites that will be clicked
+		self.settler = RoleCard("settler", self)
+		sprite_list.append(self.settler)
+		self.mayor = RoleCard("mayor", self)
+		sprite_list.append(self.mayor)
+		self.builder = RoleCard("builder", self)
+		sprite_list.append(self.builder)
+		self.craftsman = RoleCard("craftsman", self)
+		sprite_list.append(self.craftsman)
+		self.trader = RoleCard("trader", self)
+		sprite_list.append(self.trader)
+		self.captain = RoleCard("captain", self)
+		sprite_list.append(self.captain)
 		self.smallindigoplant = SmallIndigoPlant(self)
+		sprite_list.append(self.smallindigoplant)
 		self.smallsugarmill = SmallSugarMill(self)
+		sprite_list.append(self.smallsugarmill)
 		self.smallmarket = SmallMarket(self)
+		sprite_list.append(self.smallmarket)
 		self.hacienda = Hacienda(self)
+		sprite_list.append(self.hacienda)
 		self.constructionhut = ConstructionHut(self)
+		sprite_list.append(self.constructionhut)
 		self.smallwarehouse = SmallWarehouse(self)
+		sprite_list.append(self.smallwarehouse)
 		self.indigoplant = IndigoPlant(self)
+		sprite_list.append(self.indigoplant)
 		self.sugarmill = SugarMill(self)
+		sprite_list.append(self.sugarmill)
 		self.hospice = Hospice(self)
+		sprite_list.append(self.hospice)
 		self.office = Office(self)
+		sprite_list.append(self.office)
 		self.largemarket = LargeMarket(self)
+		sprite_list.append(self.largemarket)
 		self.largewarehouse = LargeWarehouse(self)
+		sprite_list.append(self.largewarehouse)
 		self.tobaccostorage = TobaccoStorage(self)
+		sprite_list.append(self.tobaccostorage)
 		self.coffeeroaster = CoffeeRoaster(self)
+		sprite_list.append(self.coffeeroaster)
 		self.university = University(self)
+		sprite_list.append(self.university)
 		self.factory = Factory(self)
+		sprite_list.append(self.factory)
 		self.harbor = Harbor(self)
+		sprite_list.append(self.harbor)
 		self.wharf = Wharf(self)
+		sprite_list.append(self.wharf)
 		self.guildhall = GuildHall(self)
+		sprite_list.append(self.guildhall)
 		self.residence = Residence(self)
+		sprite_list.append(self.residence)
 		self.fortress = Fortress(self)
+		sprite_list.append(self.fortress)
 		self.customshouse = CustomsHouse(self)
+		sprite_list.append(self.customshouse)
 		self.cityhall = CityHall(self)
+		sprite_list.append(self.cityhall)
+
+		print(len(sprite_list))
 
 		if self.numPlayers == 3:
 			self.vpoints = 75
@@ -156,6 +192,8 @@ class GameSpace:
 				elif event.type == KEYDOWN:
 					if event.key == pygame.K_q:
 						sys.exit()
+				elif event.type == MOUSEBUTTONUP:
+					print("clicked")
 
 			# tick objects
 
