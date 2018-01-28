@@ -86,66 +86,64 @@ class GameSpace:
 		self.buildingboard = BuildingBoard(self)
 
 		# Sprites that will be clicked
-		self.settler = RoleCard("settler", self)
+		self.settler = ClickableObject("RoleCard", "settler", self)
 		sprite_list.append(self.settler)
-		self.mayor = RoleCard("mayor", self)
+		self.mayor = ClickableObject("RoleCard", "mayor", self)
 		sprite_list.append(self.mayor)
-		self.builder = RoleCard("builder", self)
+		self.builder = ClickableObject("RoleCard", "builder", self)
 		sprite_list.append(self.builder)
-		self.craftsman = RoleCard("craftsman", self)
+		self.craftsman = ClickableObject("RoleCard", "craftsman", self)
 		sprite_list.append(self.craftsman)
-		self.trader = RoleCard("trader", self)
+		self.trader = ClickableObject("RoleCard", "trader", self)
 		sprite_list.append(self.trader)
-		self.captain = RoleCard("captain", self)
+		self.captain = ClickableObject("RoleCard", "captain", self)
 		sprite_list.append(self.captain)
-		self.smallindigoplant = SmallIndigoPlant(self)
+		self.smallindigoplant = ClickableObject("Building", "small_indigo_plant", self)
 		sprite_list.append(self.smallindigoplant)
-		self.smallsugarmill = SmallSugarMill(self)
+		self.smallsugarmill = ClickableObject("Building", "small_sugar_mill", self)
 		sprite_list.append(self.smallsugarmill)
-		self.smallmarket = SmallMarket(self)
+		self.smallmarket = ClickableObject("Building", "small_market", self)
 		sprite_list.append(self.smallmarket)
-		self.hacienda = Hacienda(self)
+		self.hacienda = ClickableObject("Building", "hacienda", self)
 		sprite_list.append(self.hacienda)
-		self.constructionhut = ConstructionHut(self)
+		self.constructionhut = ClickableObject("Building", "construction_hut", self)
 		sprite_list.append(self.constructionhut)
-		self.smallwarehouse = SmallWarehouse(self)
+		self.smallwarehouse = ClickableObject("Building", "small_warehouse", self)
 		sprite_list.append(self.smallwarehouse)
-		self.indigoplant = IndigoPlant(self)
+		self.indigoplant = ClickableObject("Building", "indigo_plant", self)
 		sprite_list.append(self.indigoplant)
-		self.sugarmill = SugarMill(self)
+		self.sugarmill = ClickableObject("Building", "sugar_mill", self)
 		sprite_list.append(self.sugarmill)
-		self.hospice = Hospice(self)
+		self.hospice = ClickableObject("Building", "hospice", self)
 		sprite_list.append(self.hospice)
-		self.office = Office(self)
+		self.office = ClickableObject("Building", "office", self)
 		sprite_list.append(self.office)
-		self.largemarket = LargeMarket(self)
+		self.largemarket = ClickableObject("Building", "large_market", self)
 		sprite_list.append(self.largemarket)
-		self.largewarehouse = LargeWarehouse(self)
+		self.largewarehouse = ClickableObject("Building", "large_warehouse", self)
 		sprite_list.append(self.largewarehouse)
-		self.tobaccostorage = TobaccoStorage(self)
+		self.tobaccostorage = ClickableObject("Building", "tobacco_storage", self)
 		sprite_list.append(self.tobaccostorage)
-		self.coffeeroaster = CoffeeRoaster(self)
+		self.coffeeroaster = ClickableObject("Building", "coffee_roaster", self)
 		sprite_list.append(self.coffeeroaster)
-		self.university = University(self)
+		self.university = ClickableObject("Building", "university", self)
 		sprite_list.append(self.university)
-		self.factory = Factory(self)
+		self.factory = ClickableObject("Building", "factory", self)
 		sprite_list.append(self.factory)
-		self.harbor = Harbor(self)
+		self.harbor = ClickableObject("Building", "harbor", self)
 		sprite_list.append(self.harbor)
-		self.wharf = Wharf(self)
+		self.wharf = ClickableObject("Building", "wharf", self)
 		sprite_list.append(self.wharf)
-		self.guildhall = GuildHall(self)
+		self.guildhall = ClickableObject("Building", "guild_hall", self)
 		sprite_list.append(self.guildhall)
-		self.residence = Residence(self)
+		self.residence = ClickableObject("Building", "residence", self)
 		sprite_list.append(self.residence)
-		self.fortress = Fortress(self)
+		self.fortress = ClickableObject("Building", "fortress", self)
 		sprite_list.append(self.fortress)
-		self.customshouse = CustomsHouse(self)
+		self.customshouse = ClickableObject("Building", "customs_house", self)
 		sprite_list.append(self.customshouse)
-		self.cityhall = CityHall(self)
+		self.cityhall = ClickableObject("Building", "city_hall", self)
 		sprite_list.append(self.cityhall)
-
-		print(len(sprite_list))
 
 		if self.numPlayers == 3:
 			self.vpoints = 75
@@ -163,7 +161,7 @@ class GameSpace:
 			self.cargo1 = CargoShip(5, 1, self)
 			self.cargo2 = CargoShip(6, 2, self)
 			self.cargo3 = CargoShip(7, 3, self)
-			self.prospector1 = RoleCard("prospector", self)
+			self.prospector1 = ClickableObject("RoleCard", "prospector", self)
 			self.prospector2 = None
 			self.numPiles = 5
 			self.doubloons = 74
@@ -173,8 +171,8 @@ class GameSpace:
 			self.cargo1 = CargoShip(6, 1, self)
 			self.cargo2 = CargoShip(7, 2, self)
 			self.cargo3 = CargoShip(8, 3, self)
-			self.prospector1 = RoleCard("prospector", self)
-			self.prospector2 = RoleCard("prospector", self)
+			self.prospector1 = ClickableObject("RoleCard", "prospector", self)
+			self.prospector2 = ClickableObject("RoleCard", "prospector", self)
 			self.numPiles = 6
 			self.doubloons = 66
 
@@ -192,9 +190,10 @@ class GameSpace:
 				elif event.type == KEYDOWN:
 					if event.key == pygame.K_q:
 						sys.exit()
-				elif event.type == MOUSEBUTTONUP:
-					print("clicked")
-
+				elif event.type == MOUSEBUTTONUP and event.button == 1:
+					for s in sprite_list:
+						if s.rect.collidepoint(pygame.mouse.get_pos()):
+							s.is_clicked()
 			# tick objects
 
 			# display objects
