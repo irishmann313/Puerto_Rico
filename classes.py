@@ -32,11 +32,11 @@ class CargoShip(pygame.sprite.Sprite):
 		self.image = pygame.image.load(self.imagename)
 		self.rect = self.image.get_rect()
 		if (self.size == 1):
-			self.rect.center = ((61/80)*self.gs.width, (1/14)*self.gs.height)
+			self.rect.center = ((1/2)*self.gs.width, (1/14)*self.gs.height)
 		elif (self.size == 2):
-			self.rect.center = ((61/80)*self.gs.width, (3/14)*self.gs.height)
+			self.rect.center = ((3/5)*self.gs.width, (1/14)*self.gs.height)
 		elif (self.size == 3):
-			self.rect.center = ((61/80)*self.gs.width, (5/14)*self.gs.height)
+			self.rect.center = ((7/10)*self.gs.width, (1/14)*self.gs.height)
 		self.spaces_Left = numSpaces
 
 class ColonistShip(pygame.sprite.Sprite):
@@ -46,7 +46,7 @@ class ColonistShip(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\colonist_ship.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = ((19/80)*self.gs.width, (3/14)*self.gs.height)
+		self.rect.center = ((2/5)*self.gs.width, (1/14)*self.gs.height)
 		self.numColonists = numColonists
 
 class TradingHouse(pygame.sprite.Sprite):
@@ -60,7 +60,7 @@ class TradingHouse(pygame.sprite.Sprite):
 		self.space4 = None
 		self.image = pygame.image.load("assets\\trading_house.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = ((19/80)*self.gs.width, (1/14)*self.gs.height)
+		self.rect.center = ((3/10)*self.gs.width, (1/14)*self.gs.height)
 
 class BuildingBoard(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -81,11 +81,11 @@ class Menu(pygame.sprite.Sprite):
 		self.numPlayers = self.gs.minPlayers
 		self.isMenu = True
 
-		self.l2 = "Play with " + str(self.numPlayers) + " players (Press the Up or Down arrows to change)"
-		self.l3 = "Press Enter to begin!"
+		self.l2 = pygame.font.SysFont('mono', 36, bold=True).render("Play with " + str(self.numPlayers) + " players (Press the Up or Down arrows to change)", True, (150,150,255))
+		self.l3 = pygame.font.SysFont('mono', 36, bold=True).render("Press Enter to begin!", True, (150,150,255))
 
 	def tick(self):
-		self.l2 = "Play with " + str(self.numPlayers) + " players (Press the Up or Down arrows to change)"
+		self.l2 = pygame.font.SysFont('mono', 36, bold=True).render("Play with " + str(self.numPlayers) + " players (Press the Up or Down arrows to change)", True, (150,150,255))
 
 	def changePlayers(self, code):
 		if code == pygame.K_UP:

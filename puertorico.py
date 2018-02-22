@@ -15,16 +15,17 @@ class GameSpace:
 		pygame.key.set_repeat(1, 50)
 
 		# game constants
-		self.size = self.width, self.height = 1366, 768
+		infoObject = pygame.display.Info()
+		self.size = self.width, self.height = infoObject.current_w, infoObject.current_h
 		self.black = 255, 255, 255
 
-		self.screen = pygame.display.set_mode(self.size)#, pygame.FULLSCREEN)
+		self.screen = pygame.display.set_mode(self.size, pygame.FULLSCREEN)
 		self.clock = pygame.time.Clock()
 
 		self.gameOver = False
 		self.quit = False
 
-		self.title = "Puerto Rico"
+		self.title = pygame.font.SysFont('mono', 36, bold=True).render("Puerto Rico", True, (100, 100, 200))
 
 		self.minPlayers = 3
 		self.maxPlayers = 5
@@ -55,9 +56,9 @@ class GameSpace:
 			self.screen.fill(self.black)
 
 			self.screen.blit(self.menu.image, self.menu.rect)
-			self.screen.blit(pygame.font.SysFont('mono', 36, bold=True).render(str(self.title), True, (100, 100, 200)), ((self.width/2.5), 30))
-			self.screen.blit(pygame.font.SysFont('mono', 24, bold=True).render(str(self.menu.l2), True, (150,150,255)), ((self.width/5), 85))
-			self.screen.blit(pygame.font.SysFont('mono', 32, bold=True).render(str(self.menu.l3), True, (150,150,255)), ((self.width/2.75), (self.height-70)))
+			self.screen.blit(self.title, ((self.width/2) - (self.title.get_rect().width/2), (1/20)*self.height))
+			self.screen.blit(self.menu.l2, ((self.width/2) - (self.menu.l2.get_rect().width/2), (3/20)*self.height))
+			self.screen.blit(self.menu.l3, ((self.width/2) - (self.menu.l3.get_rect().width/2), (17/20)*self.height))
 
 			pygame.display.flip()
 
@@ -178,10 +179,11 @@ class GameSpace:
 
 		self.turnOrder(self.players)
 
+		showBuildingBoard = False
+
 		# main game loop
 		while self.quit == False:
 			self.clock.tick(60)
-
 
 			# handle input
 			for event in pygame.event.get():
@@ -190,44 +192,53 @@ class GameSpace:
 				elif event.type == KEYDOWN:
 					if event.key == pygame.K_q:
 						sys.exit()
+					elif event.key == pygame.K_b:
+						showBuildingBoard = True
+					elif event.key == pygame.K_m:
+						showBuildingBoard = False
+					else:
+						pass
 				elif event.type == MOUSEBUTTONUP and event.button == 1:
 					for s in sprite_list:
 						if s.rect.collidepoint(pygame.mouse.get_pos()):
 							s.is_clicked()
+				else:
+					pass
 			# tick objects
 
-			# display objects
+			# display objects in main screen
 			self.screen.fill(self.black)
-			self.screen.blit(self.buildingboard.image, self.buildingboard.rect)
-			self.screen.blit(self.tradinghouse.image, self.tradinghouse.rect)
-			self.screen.blit(self.colonistship.image, self.colonistship.rect)
-			self.screen.blit(self.cargo1.image, self.cargo1.rect)
-			self.screen.blit(self.cargo2.image, self.cargo2.rect)
-			self.screen.blit(self.cargo3.image, self.cargo3.rect)
-			self.screen.blit(self.smallindigoplant.image, self.smallindigoplant.rect)
-			self.screen.blit(self.smallsugarmill.image, self.smallsugarmill.rect)
-			self.screen.blit(self.smallmarket.image, self.smallmarket.rect)
-			self.screen.blit(self.hacienda.image, self.hacienda.rect)
-			self.screen.blit(self.constructionhut.image, self.constructionhut.rect)
-			self.screen.blit(self.smallwarehouse.image, self.smallwarehouse.rect)
-			self.screen.blit(self.indigoplant.image, self.indigoplant.rect)
-			self.screen.blit(self.sugarmill.image, self.sugarmill.rect)
-			self.screen.blit(self.hospice.image, self.hospice.rect)
-			self.screen.blit(self.office.image, self.office.rect)
-			self.screen.blit(self.largemarket.image, self.largemarket.rect)
-			self.screen.blit(self.largewarehouse.image, self.largewarehouse.rect)
-			self.screen.blit(self.tobaccostorage.image, self.tobaccostorage.rect)
-			self.screen.blit(self.coffeeroaster.image, self.coffeeroaster.rect)
-			self.screen.blit(self.university.image, self.university.rect)
-			self.screen.blit(self.factory.image, self.factory.rect)
-			self.screen.blit(self.harbor.image, self.harbor.rect)
-			self.screen.blit(self.wharf.image, self.wharf.rect)
-			self.screen.blit(self.guildhall.image, self.guildhall.rect)
-			self.screen.blit(self.residence.image, self.residence.rect)
-			self.screen.blit(self.fortress.image, self.fortress.rect)
-			self.screen.blit(self.customshouse.image, self.customshouse.rect)
-			self.screen.blit(self.cityhall.image, self.cityhall.rect)
-
+			if showBuildingBoard:
+				self.screen.blit(self.buildingboard.image, self.buildingboard.rect)
+				self.screen.blit(self.smallindigoplant.image, self.smallindigoplant.rect)
+				self.screen.blit(self.smallsugarmill.image, self.smallsugarmill.rect)
+				self.screen.blit(self.smallmarket.image, self.smallmarket.rect)
+				self.screen.blit(self.hacienda.image, self.hacienda.rect)
+				self.screen.blit(self.constructionhut.image, self.constructionhut.rect)
+				self.screen.blit(self.smallwarehouse.image, self.smallwarehouse.rect)
+				self.screen.blit(self.indigoplant.image, self.indigoplant.rect)
+				self.screen.blit(self.sugarmill.image, self.sugarmill.rect)
+				self.screen.blit(self.hospice.image, self.hospice.rect)
+				self.screen.blit(self.office.image, self.office.rect)
+				self.screen.blit(self.largemarket.image, self.largemarket.rect)
+				self.screen.blit(self.largewarehouse.image, self.largewarehouse.rect)
+				self.screen.blit(self.tobaccostorage.image, self.tobaccostorage.rect)
+				self.screen.blit(self.coffeeroaster.image, self.coffeeroaster.rect)
+				self.screen.blit(self.university.image, self.university.rect)
+				self.screen.blit(self.factory.image, self.factory.rect)
+				self.screen.blit(self.harbor.image, self.harbor.rect)
+				self.screen.blit(self.wharf.image, self.wharf.rect)
+				self.screen.blit(self.guildhall.image, self.guildhall.rect)
+				self.screen.blit(self.residence.image, self.residence.rect)
+				self.screen.blit(self.fortress.image, self.fortress.rect)
+				self.screen.blit(self.customshouse.image, self.customshouse.rect)
+				self.screen.blit(self.cityhall.image, self.cityhall.rect)
+			else:
+				self.screen.blit(self.tradinghouse.image, self.tradinghouse.rect)
+				self.screen.blit(self.colonistship.image, self.colonistship.rect)
+				self.screen.blit(self.cargo1.image, self.cargo1.rect)
+				self.screen.blit(self.cargo2.image, self.cargo2.rect)
+				self.screen.blit(self.cargo3.image, self.cargo3.rect)
 			pygame.display.flip()
 
 	def turnOrder(self, players):
