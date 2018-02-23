@@ -32,11 +32,11 @@ class CargoShip(pygame.sprite.Sprite):
 		self.image = pygame.image.load(self.imagename)
 		self.rect = self.image.get_rect()
 		if (self.size == 1):
-			self.rect.center = ((1/2)*self.gs.width, (1/14)*self.gs.height)
+			self.rect.center = ((10/20)*self.gs.width, (18/20)*self.gs.height)
 		elif (self.size == 2):
-			self.rect.center = ((3/5)*self.gs.width, (1/14)*self.gs.height)
+			self.rect.center = ((11/20)*self.gs.width, (18/20)*self.gs.height)
 		elif (self.size == 3):
-			self.rect.center = ((7/10)*self.gs.width, (1/14)*self.gs.height)
+			self.rect.center = ((12/20)*self.gs.width, (18/20)*self.gs.height)
 		self.spaces_Left = numSpaces
 
 class ColonistShip(pygame.sprite.Sprite):
@@ -46,7 +46,7 @@ class ColonistShip(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\colonist_ship.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = ((2/5)*self.gs.width, (1/14)*self.gs.height)
+		self.rect.center = ((8/20)*self.gs.width, (18/20)*self.gs.height)
 		self.numColonists = numColonists
 
 class TradingHouse(pygame.sprite.Sprite):
@@ -60,7 +60,7 @@ class TradingHouse(pygame.sprite.Sprite):
 		self.space4 = None
 		self.image = pygame.image.load("assets\\trading_house.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = ((3/10)*self.gs.width, (1/14)*self.gs.height)
+		self.rect.center = ((9/20)*self.gs.width, (18/20)*self.gs.height)
 
 class BuildingBoard(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -98,6 +98,17 @@ class Menu(pygame.sprite.Sprite):
 				pass
 			else:
 				self.numPlayers -= 1
+
+class PlayerBoard(pygame.sprite.Sprite):
+	def __init__(self, playerNumber, gs=None):
+		pygame.sprite.Sprite.__init__(self)
+		self.gs = gs
+		self.playerNumber = playerNumber
+		self.image = pygame.image.load("assets\\player_board.png")
+		self.rect = self.image.get_rect()
+		self.rect.center = (self.gs.width/2, self.gs.height/2)
+
+		self.playertext = pygame.font.SysFont('mono', 36, bold=True).render("Player " + str(self.playerNumber), True, (150,150,255))
 
 class ClickableObject(pygame.sprite.Sprite):
 	def __init__(self, card_type, name, gs=None):

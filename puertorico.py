@@ -85,6 +85,9 @@ class GameSpace:
 		self.colonistship = ColonistShip(self.numPlayers, self)
 		self.tradinghouse = TradingHouse(self)
 		self.buildingboard = BuildingBoard(self)
+		self.playerboards = []
+		for i in range(1, self.numPlayers+1):
+			self.playerboards.append(PlayerBoard(i, self))
 
 		# Sprites that will be clicked
 		self.settler = ClickableObject("RoleCard", "settler", self)
@@ -180,6 +183,7 @@ class GameSpace:
 		self.turnOrder(self.players)
 
 		showBuildingBoard = False
+		playerView = 1
 
 		# main game loop
 		while self.quit == False:
@@ -196,6 +200,16 @@ class GameSpace:
 						showBuildingBoard = True
 					elif event.key == pygame.K_m:
 						showBuildingBoard = False
+					elif event.key == pygame.K_1:
+						playerView = 1
+					elif event.key == pygame.K_2:
+						playerView = 2
+					elif event.key == pygame.K_3:
+						playerView = 3
+					elif event.key == pygame.K_4 and self.numPlayers >= 4:
+						playerView = 4
+					elif event.key == pygame.K_5 and self.numPlayers == 5:
+						playerView = 5
 					else:
 						pass
 				elif event.type == MOUSEBUTTONUP and event.button == 1:
@@ -239,6 +253,22 @@ class GameSpace:
 				self.screen.blit(self.cargo1.image, self.cargo1.rect)
 				self.screen.blit(self.cargo2.image, self.cargo2.rect)
 				self.screen.blit(self.cargo3.image, self.cargo3.rect)
+				if playerView == 1:
+					self.screen.blit(self.playerboards[0].image, self.playerboards[0].rect)
+					self.screen.blit(self.playerboards[0].playertext, ((self.width/2) - (self.title.get_rect().width/2), (1/20)*self.height))
+				elif playerView == 2:
+					self.screen.blit(self.playerboards[1].image, self.playerboards[1].rect)
+					self.screen.blit(self.playerboards[1].playertext, ((self.width/2) - (self.title.get_rect().width/2), (1/20)*self.height))
+				elif playerView == 3:
+					self.screen.blit(self.playerboards[2].image, self.playerboards[2].rect)
+					self.screen.blit(self.playerboards[2].playertext, ((self.width/2) - (self.title.get_rect().width/2), (1/20)*self.height))
+				elif playerView == 4:
+					self.screen.blit(self.playerboards[3].image, self.playerboards[3].rect)
+					self.screen.blit(self.playerboards[3].playertext, ((self.width/2) - (self.title.get_rect().width/2), (1/20)*self.height))
+				elif playerView == 5:
+					self.screen.blit(self.playerboards[4].image, self.playerboards[4].rect)
+					self.screen.blit(self.playerboards[4].playertext, ((self.width/2) - (self.title.get_rect().width/2), (1/20)*self.height))
+
 			pygame.display.flip()
 
 	def turnOrder(self, players):
