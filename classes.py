@@ -32,11 +32,11 @@ class CargoShip(pygame.sprite.Sprite):
 		self.image = pygame.image.load(self.imagename)
 		self.rect = self.image.get_rect()
 		if (self.size == 1):
-			self.rect.center = ((10/20)*self.gs.width, (18/20)*self.gs.height)
+			self.rect.center = ((2/8)*self.gs.width, (4/20)*self.gs.height)
 		elif (self.size == 2):
-			self.rect.center = ((11/20)*self.gs.width, (18/20)*self.gs.height)
+			self.rect.center = ((2/8)*self.gs.width, (7/20)*self.gs.height)
 		elif (self.size == 3):
-			self.rect.center = ((12/20)*self.gs.width, (18/20)*self.gs.height)
+			self.rect.center = ((2/8)*self.gs.width, (10/20)*self.gs.height)
 		self.spaces_Left = numSpaces
 
 class ColonistShip(pygame.sprite.Sprite):
@@ -46,7 +46,7 @@ class ColonistShip(pygame.sprite.Sprite):
 		self.gs = gs
 		self.image = pygame.image.load("assets\\colonist_ship.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = ((8/20)*self.gs.width, (18/20)*self.gs.height)
+		self.rect.center = ((2/8)*self.gs.width, (13/20)*self.gs.height)
 		self.numColonists = numColonists
 
 class TradingHouse(pygame.sprite.Sprite):
@@ -60,7 +60,7 @@ class TradingHouse(pygame.sprite.Sprite):
 		self.space4 = None
 		self.image = pygame.image.load("assets\\trading_house.png")
 		self.rect = self.image.get_rect()
-		self.rect.center = ((9/20)*self.gs.width, (18/20)*self.gs.height)
+		self.rect.center = ((2/8)*self.gs.width, (16/20)*self.gs.height)
 
 class BuildingBoard(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
@@ -115,26 +115,65 @@ class ClickableObject(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 
 		self.gs = gs
-		self.image = pygame.image.load("assets\\"+name+".png")
+		if name == "prospector1" or name == "prospector2":
+			self.image = pygame.image.load("assets\\prospector.png")
+		else:
+			self.image = pygame.image.load("assets\\"+name+".png")
 		self.rect = self.image.get_rect()
 
 		if card_type == 'RoleCard':
-			#self.rect.center = (self.gs.width/2, self.gs.height/2)
 			self.doubloons = 0
-			if name == 'settler':
-				pass
-			elif name == 'mayor':
-				pass
-			elif name == 'builder':
-				pass
-			elif name == 'crafstman':
-				pass
-			elif name == 'trader':
-				pass
-			elif name == 'captain':
-				pass
-			elif name == 'prospector':
-				pass
+			if self.gs.numPlayers == 3:
+				if name == 'settler':
+					self.rect.center = ((12/16)*self.gs.width, (10/30)*self.gs.height)
+				elif name == 'mayor':
+					self.rect.center = ((12/16)*self.gs.width, (15/30)*self.gs.height)
+				elif name == 'builder':
+					self.rect.center = ((12/16)*self.gs.width, (20/30)*self.gs.height)
+				elif name == 'craftsman':
+					self.rect.center = ((13/16)*self.gs.width, (10/30)*self.gs.height)
+				elif name == 'trader':
+					self.rect.center = ((13/16)*self.gs.width, (15/30)*self.gs.height)
+				elif name == 'captain':
+					self.rect.center = ((13/16)*self.gs.width, (20/30)*self.gs.height)
+				else:
+					pass
+			elif self.gs.numPlayers == 4:
+				if name == 'settler':
+					self.rect.center = ((12/16)*self.gs.width, (8/30)*self.gs.height)
+				elif name == 'mayor':
+					self.rect.center = ((12/16)*self.gs.width, (12/30)*self.gs.height)
+				elif name == 'builder':
+					self.rect.center = ((12/16)*self.gs.width, (16/30)*self.gs.height)
+				elif name == 'craftsman':
+					self.rect.center = ((12/16)*self.gs.width, (20/30)*self.gs.height)
+				elif name == 'trader':
+					self.rect.center = ((13/16)*self.gs.width, (10/30)*self.gs.height)
+				elif name == 'captain':
+					self.rect.center = ((13/16)*self.gs.width, (14/30)*self.gs.height)
+				elif name == 'prospector1':
+					self.rect.center = ((13/16)*self.gs.width, (18/30)*self.gs.height)
+				else:
+					pass
+			else:
+				if name == 'settler':
+					self.rect.center = ((12/16)*self.gs.width, (7/30)*self.gs.height)
+				elif name == 'mayor':
+					self.rect.center = ((12/16)*self.gs.width, (12/30)*self.gs.height)
+				elif name == 'builder':
+					self.rect.center = ((12/16)*self.gs.width, (17/30)*self.gs.height)
+				elif name == 'craftsman':
+					self.rect.center = ((12/16)*self.gs.width, (22/30)*self.gs.height)
+				elif name == 'trader':
+					self.rect.center = ((13/16)*self.gs.width, (7/30)*self.gs.height)
+				elif name == 'captain':
+					self.rect.center = ((13/16)*self.gs.width, (12/30)*self.gs.height)
+				elif name == 'prospector1':
+					self.rect.center = ((13/16)*self.gs.width, (17/30)*self.gs.height)
+				elif name == 'prospector2':
+					self.rect.center = ((13/16)*self.gs.width, (22/30)*self.gs.height)
+				else:
+					pass
 		elif card_type == 'Building':
 			if name == 'small_indigo_plant':
 				self.rect.center = ((99/320)*self.gs.width, (11/112)*self.gs.height)

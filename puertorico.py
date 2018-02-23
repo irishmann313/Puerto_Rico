@@ -165,7 +165,7 @@ class GameSpace:
 			self.cargo1 = CargoShip(5, 1, self)
 			self.cargo2 = CargoShip(6, 2, self)
 			self.cargo3 = CargoShip(7, 3, self)
-			self.prospector1 = ClickableObject("RoleCard", "prospector", self)
+			self.prospector1 = ClickableObject("RoleCard", "prospector1", self)
 			self.prospector2 = None
 			self.numPiles = 5
 			self.doubloons = 74
@@ -175,8 +175,8 @@ class GameSpace:
 			self.cargo1 = CargoShip(6, 1, self)
 			self.cargo2 = CargoShip(7, 2, self)
 			self.cargo3 = CargoShip(8, 3, self)
-			self.prospector1 = ClickableObject("RoleCard", "prospector", self)
-			self.prospector2 = ClickableObject("RoleCard", "prospector", self)
+			self.prospector1 = ClickableObject("RoleCard", "prospector1", self)
+			self.prospector2 = ClickableObject("RoleCard", "prospector2", self)
 			self.numPiles = 6
 			self.doubloons = 66
 
@@ -253,6 +253,16 @@ class GameSpace:
 				self.screen.blit(self.cargo1.image, self.cargo1.rect)
 				self.screen.blit(self.cargo2.image, self.cargo2.rect)
 				self.screen.blit(self.cargo3.image, self.cargo3.rect)
+				self.screen.blit(self.builder.image, self.builder.rect)
+				self.screen.blit(self.captain.image, self.captain.rect)
+				self.screen.blit(self.craftsman.image, self.craftsman.rect)
+				self.screen.blit(self.mayor.image, self.mayor.rect)
+				self.screen.blit(self.settler.image, self.settler.rect)
+				self.screen.blit(self.trader.image, self.trader.rect)
+				if self.prospector1 is not None:
+					self.screen.blit(self.prospector1.image, self.prospector1.rect)
+				if self.prospector2 is not None:
+					self.screen.blit(self.prospector2.image, self.prospector2.rect)
 				if playerView == 1:
 					self.screen.blit(self.playerboards[0].image, self.playerboards[0].rect)
 					self.screen.blit(self.playerboards[0].playertext, ((self.width/2) - (self.title.get_rect().width/2), (1/20)*self.height))
