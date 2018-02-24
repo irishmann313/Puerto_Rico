@@ -28,7 +28,7 @@ class CargoShip(pygame.sprite.Sprite):
 		self.gs = gs
 		self.total_Spaces = numSpaces
 		self.size = size
-		self.imagename = "assets\\cargoship" + str(self.total_Spaces) + ".png"
+		self.imagename = "assets/cargoship" + str(self.total_Spaces) + ".png"
 		self.image = pygame.image.load(self.imagename)
 		self.rect = self.image.get_rect()
 		if (self.size == 1):
@@ -44,7 +44,7 @@ class ColonistShip(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 
 		self.gs = gs
-		self.image = pygame.image.load("assets\\colonist_ship.png")
+		self.image = pygame.image.load("assets/colonist_ship.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((2/8)*self.gs.width, (13/20)*self.gs.height)
 		self.numColonists = numColonists
@@ -58,7 +58,7 @@ class TradingHouse(pygame.sprite.Sprite):
 		self.space2 = None
 		self.space3 = None
 		self.space4 = None
-		self.image = pygame.image.load("assets\\trading_house.png")
+		self.image = pygame.image.load("assets/trading_house.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = ((2/8)*self.gs.width, (16/20)*self.gs.height)
 
@@ -67,7 +67,7 @@ class BuildingBoard(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 
 		self.gs = gs
-		self.image = pygame.image.load("assets\\building_board.png")
+		self.image = pygame.image.load("assets/building_board.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, 3*self.gs.height/10)
 
@@ -75,7 +75,7 @@ class Menu(pygame.sprite.Sprite):
 	def __init__(self, gs=None):
 		pygame.sprite.Sprite.__init__(self)
 		self.gs = gs
-		self.image = pygame.image.load("assets\\menu.png")
+		self.image = pygame.image.load("assets/menu.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, self.gs.height/2)
 		self.numPlayers = self.gs.minPlayers
@@ -104,7 +104,7 @@ class PlayerBoard(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 		self.gs = gs
 		self.playerNumber = playerNumber
-		self.image = pygame.image.load("assets\\player_board.png")
+		self.image = pygame.image.load("assets/player_board.png")
 		self.rect = self.image.get_rect()
 		self.rect.center = (self.gs.width/2, self.gs.height/2)
 
@@ -117,9 +117,9 @@ class ClickableObject(pygame.sprite.Sprite):
 		self.gs = gs
 		self.name = name
 		if name == "prospector1" or name == "prospector2":
-			self.image = pygame.image.load("assets\\prospector.png")
+			self.image = pygame.image.load("assets/prospector.png")
 		else:
-			self.image = pygame.image.load("assets\\"+name+".png")
+			self.image = pygame.image.load("assets/"+name+".png")
 		self.rect = self.image.get_rect()
 
 		if card_type == 'RoleCard':
