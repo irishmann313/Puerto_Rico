@@ -23,6 +23,7 @@ class GameSpace:
 		self.clock = pygame.time.Clock()
 
 		self.gameOver = False
+		self.selectedRole = ""
 		self.quit = False
 
 		self.title = pygame.font.SysFont('mono', 36, bold=True).render("Puerto Rico", True, (100, 100, 200))
@@ -188,6 +189,7 @@ class GameSpace:
 		# main game loop
 		while self.quit == False:
 			self.clock.tick(60)
+			self.selectedRole = ""
 
 			# handle input
 			for event in pygame.event.get():
@@ -215,10 +217,11 @@ class GameSpace:
 				elif event.type == MOUSEBUTTONUP and event.button == 1:
 					for s in sprite_list:
 						if s.rect.collidepoint(pygame.mouse.get_pos()):
-							s.is_clicked()
+							self.selectedRole = s.is_clicked()
 				else:
 					pass
-			# tick objects
+			# game logic
+			
 
 			# display objects in main screen
 			self.screen.fill(self.black)

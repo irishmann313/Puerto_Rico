@@ -115,6 +115,7 @@ class ClickableObject(pygame.sprite.Sprite):
 		pygame.sprite.Sprite.__init__(self)
 
 		self.gs = gs
+		self.name = name
 		if name == "prospector1" or name == "prospector2":
 			self.image = pygame.image.load("assets\\prospector.png")
 		else:
@@ -224,3 +225,4 @@ class ClickableObject(pygame.sprite.Sprite):
 
 	def is_clicked(self):
 		self.rect.center = (self.gs.width/2, self.gs.height)
+		return self.name
