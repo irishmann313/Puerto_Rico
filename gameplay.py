@@ -12,6 +12,7 @@ class Player():
 	self.buildingSpaces = 12
 	self.islandSpaces = 12
 	self.victoryPoints = 0
+        self.quarries = 0
 	if numPlayers == 3:
 	    self.doubloons = 2
 	elif numPlayers == 4:
@@ -42,8 +43,10 @@ def turnOrder(players):
 if __name__ == '__main__':
 
     # get number of players
-    print "How many players?"
-    numPlayers = int(raw_input())
+    numPlayers = 0
+    while numPlayers < 3 or numPlayers > 5:
+        print "How many players? (Must be between 3 and 5)"
+        numPlayers = int(raw_input())
 
     # game constants
     gameOver = False
@@ -61,7 +64,7 @@ if __name__ == '__main__':
         playerFour = Player(4, numPlayers)
         players.append(playerFour)
     if numPlayers == 5:
-        playerFive = Playe(5, numPlayers)
+        playerFive = Player(5, numPlayers)
         players.append(playerFive)
     players = turnOrder(players)
 
@@ -87,20 +90,248 @@ if __name__ == '__main__':
         roleCards.append(prospector2)
 
     while gameOver == False:
+        print "Player " + str(players[turnPointer].pn) + "'s Turn!"
         for player in players:
             print str(player.pn) + ": " +  str(player.doubloons)
         for role in roleCards:
             if role.available:
                 print role.role + ": " + str(role.doubloons)
-        print "What you doin'?"
-        command = raw_input()
+        command = raw_input().lower()
         if command == "rage quit":
             gameOver = True
         elif command == "builder":
             if builder.available:
                 players[turnPointer].doubloons += builder.doubloons
+                players[turnPointer].doubloons += 1
+                bonusPlayer = players[turnPointer].pn
                 builder.clicked()
                 turnPointer += 1
+                for player in players:
+                    print "Player " + str(player.pn) + ", do you want to build?"
+                    answer = raw_input().lower()
+                    while answer is not "next":
+                        if (answer == "yes"):
+                            print "You have " + str((player.doubloons + player.quarries)) + " doubloons available; what would you like to purchase?"
+                            answer = raw_input().lower()
+                            if (answer == "cancel"):
+                                answer = "next"
+                            elif (answer == "city hall"):
+                                if (player.doubloons + player.quarries) < 10:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 10
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "coffee roaster"):
+                                if (player.doubloons + player.quarries) < 6:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 6
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "construction hut"):
+                                if (player.doubloons + player.quarries) < 2:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 2
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "customs house"):
+                                if (player.doubloons + player.quarries) < 10:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 10
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "factory"):
+                                if (player.doubloons + player.quarries) < 8:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 8
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "fortress"):
+                                if (player.doubloons + player.quarries) < 10:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 10
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "guild hall"):
+                                if (player.doubloons + player.quarries) < 10:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 10
+                                    print "You bought a " + answer
+                            elif (answer == "hacienda"):
+                                if (player.doubloons + player.quarries) < 2:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 2
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "harbor"):
+                                if (player.doubloons + player.quarries) < 8:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 8
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "hospice"):
+                                if (player.doubloons + player.quarries) < 4:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 4
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "indigo plant"):
+                                if (player.doubloons + player.quarries) < 3:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 3
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "large market"):
+                                if (player.doubloons + player.quarries) < 5:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 5
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "large warehouse"):
+                                if (player.doubloons + player.quarries) < 6:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 6
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "office"):
+                                if (player.doubloons + player.quarries) < 5:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 5
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "residence"):
+                                if (player.doubloons + player.quarries) < 10:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 10
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "small indigo plant"):
+                                if (player.doubloons + player.quarries) < 1:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 1
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "small market"):
+                                if (player.doubloons + player.quarries) < 1:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 1
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "small sugar mill"):
+                                if (player.doubloons + player.quarries) < 2:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 2
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "small warehouse"):
+                                if (player.doubloons + player.quarries) < 3:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 3
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "sugar mill"):
+                                if (player.doubloons + player.quarries) < 4:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 4
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "tobacco storage"):
+                                if (player.doubloons + player.quarries) < 5:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 5
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "university"):
+                                if (player.doubloons + player.quarries) < 7:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 7
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            elif (answer == "wharf"):
+                                if (player.doubloons + player.quarries) < 9:
+                                    print "You don't have enough money to buy a " + answer
+                                    print "Would you still like to build?"
+                                    answer = raw_input().lower()
+                                else:
+                                    player.doubloons -= 9
+                                    print "You bought a " + answer
+                                    answer = "next"
+                            else:
+                                print "Bad input; do you still want to build?"
+                                answer = raw_input().lower()
+                        elif (answer == "no"):
+                            answer = "next"
+                            if player.pn == bonusPlayer:
+                                player.doubloons -= 1
+                            continue
+                        else:
+                            print "Bad input; do you still want to build?"
+                            answer = raw_input().lower()
             else:
                 print "Builder has already been taken"
         elif command == "captain":
@@ -154,4 +385,5 @@ if __name__ == '__main__':
         if turnPointer >= numPlayers:
             for role in roleCards:
                 role.cleanup()
+            players.append(players.pop(0))
             turnPointer = 0
